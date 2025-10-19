@@ -1,6 +1,7 @@
 class_name PlayerStateIdle extends PlayerState
 
 
+
 # what happens when this state is initialized?
 func init() -> void:
 	pass
@@ -20,6 +21,8 @@ func exit() -> void:
 # what happens when an input is pressed?
 func handle_input( _event : InputEvent ) -> PlayerState:
 	#handle input, duh
+	if _event.is_action_pressed( "jump" ):
+		return jump
 	return next_state
   
 
@@ -33,4 +36,6 @@ func process( _delta: float ) -> PlayerState:
 #what happens each physics_process tick in this state?
 func physics_process( _delta: float ) -> PlayerState:
 	player.velocity.x = 0
+	if player.is_on_floor() == false:
+		return fall
 	return next_state

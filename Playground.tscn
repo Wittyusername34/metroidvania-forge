@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c184frfx5ih5r"]
+[gd_scene load_steps=7 format=3 uid="uid://c184frfx5ih5r"]
 
 [ext_resource type="PackedScene" uid="uid://cfa3xni5hj64u" path="res://player/player.tscn" id="1_80c3a"]
 
@@ -12,6 +12,14 @@ height = 32
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d17em"]
 size = Vector2(32, 32)
+
+[sub_resource type="Gradient" id="Gradient_80c3a"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d17em"]
+gradient = SubResource("Gradient_80c3a")
+width = 32
+height = 32
 
 [node name="Playground" type="Node2D"]
 
@@ -68,7 +76,7 @@ shape = SubResource("RectangleShape2D_d17em")
 [node name="Sprite2D5" type="Sprite2D" parent="."]
 position = Vector2(261.125, 157.875)
 scale = Vector2(3.6171873, 0.9921873)
-texture = SubResource("GradientTexture2D_80c3a")
+texture = SubResource("GradientTexture2D_d17em")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D5"]
 
