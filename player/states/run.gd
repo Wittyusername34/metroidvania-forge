@@ -9,7 +9,7 @@ func init() -> void:
 
 # What happens when we enter this state?
 func enter() -> void:
-	#Play the animation gronk!
+	player.animation_player.play( "run" )
 	pass
 
 

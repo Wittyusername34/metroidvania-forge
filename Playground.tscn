@@ -89,9 +89,9 @@ one_way_collision = true
 debug_color = Color(0, 0.6, 0.69803923, 0.101960786)
 
 [node name="Sprite2D8" type="Sprite2D" parent="."]
-position = Vector2(115.92121, 242.93607)
-rotation = 0.68179107
-scale = Vector2(2.4733849, 1.2668363)
+position = Vector2(148.45616, 243.89948)
+rotation = 0.36801907
+scale = Vector2(3.902226, 1.2886313)
 texture = SubResource("GradientTexture2D_80c3a")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D8"]
