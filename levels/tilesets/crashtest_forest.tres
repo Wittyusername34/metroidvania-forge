@@ -1,6 +1,12 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://lpqhfgvjb1ri"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://lpqhfgvjb1ri"]
 
 [ext_resource type="Texture2D" uid="uid://bdfgu14350lk5" path="res://levels/tilesets/sprites/forgotten_forest_example_tileset.png" id="1_nmawa"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_nmawa"]
+tile_data = PackedInt32Array(0, 1507329, 9, 65536, 1507329, 10, 131072, 1507329, 11, 196608, 1507329, 12, 262144, 1638401, 6, 327680, 1638401, 7, 1, 1572865, 9, 65537, 1572865, 12, 131073, 1572865, 12, 196609, 1572865, 12, 262145, 1703937, 6, 327681, 1703937, 7, 393217, 1703937, 8, 458753, 1703937, 9, 786433, 1703937, 14, 851969, 1703937, 15, 2, 1572865, 9, 65538, 1572865, 10, 131074, 1572865, 11, 196610, 1572865, 12, 262146, 1769473, 6, 327682, 1769473, 7, 393218, 1769473, 8, 458754, 1769473, 9, 524290, 1769473, 10, 589826, 1769473, 11, 655362, 1769473, 12, 720898, 1769473, 13, 786434, 1769473, 14, 851970, 1769473, 15, 3, 1572865, 9, 65539, 1572865, 12, 131075, 1572865, 12, 196611, 1572865, 12, 262147, 1835009, 6, 327683, 1835009, 7, 655363, 1835009, 12, 786435, 1835009, 14, 851971, 1835009, 15, 65540, 1638401, 10, 131076, 1638401, 11, 196612, 1638401, 12, 262148, 1900545, 6)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_lc3ru"]
+tile_data = PackedInt32Array(0, 1507329, 9, 65536, 1507329, 10, 131072, 1507329, 11, 196608, 1507329, 12, 262144, 1507329, 13, 1, 1572865, 9, 65537, 1572865, 10, 131073, 1572865, 11, 196609, 1572865, 12, 262145, 1572865, 13, 327681, 1572865, 14, 393217, 1572865, 15, 65538, 1638401, 10, 131074, 1638401, 11, 196610, 1638401, 12, 262146, 1638401, 13)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lc3ru"]
 texture = ExtResource("1_nmawa")
@@ -1203,3 +1209,5 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 terrain_set_0/terrain_1/name = "Stone Terrain"
 terrain_set_0/terrain_1/color = Color(0.43137255, 0.49019608, 1, 1)
 sources/1 = SubResource("TileSetAtlasSource_lc3ru")
+pattern_0 = SubResource("TileMapPattern_nmawa")
+pattern_1 = SubResource("TileMapPattern_lc3ru")
