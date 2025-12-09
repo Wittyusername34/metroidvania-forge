@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6uhs3sg506us"]
+[gd_scene load_steps=15 format=3 uid="uid://b6uhs3sg506us"]
 
 [ext_resource type="Texture2D" uid="uid://bdfgu14350lk5" path="res://levels/tilesets/sprites/forgotten_forest_example_tileset.png" id="1_7yq1y"]
 [ext_resource type="Script" uid="uid://5nwgpdrd1041" path="res://general/scripts/light_flicker.gd" id="2_dok03"]
@@ -47,7 +47,7 @@ animations = [{
 }]
 
 [sub_resource type="Gradient" id="Gradient_7yq1y"]
-offsets = PackedFloat32Array(0, 0.4, 0.7, 1)
+offsets = PackedFloat32Array(0, 0.23333333, 0.7, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 0, 0.84705883, 1, 0.49803922, 0, 0.654902, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dok03"]
@@ -57,6 +57,31 @@ height = 256
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dok03"]
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_dok03"]
+offsets = PackedFloat32Array(0.018867925, 0.29245284, 0.6698113, 1)
+colors = PackedColorArray(1, 1, 0, 1, 0.84313726, 0.52156866, 0, 0.7764706, 1, 0.63643503, 0.4956144, 0.72156864, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fks1p"]
+gradient = SubResource("Gradient_dok03")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_58nh8"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = -0.3
+direction = Vector3(0, -20, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 300.0
+angular_velocity_min = -200.00002
+angular_velocity_max = 199.99998
+gravity = Vector3(0, 98, 0)
+color_ramp = SubResource("GradientTexture1D_fks1p")
+turbulence_enabled = true
+turbulence_influence_max = 0.3
+turbulence_initial_displacement_min = -19.999998
+turbulence_initial_displacement_max = 20.000002
 
 [node name="Torch" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_6gf8q")
@@ -71,3 +96,10 @@ texture = SubResource("GradientTexture2D_dok03")
 script = ExtResource("2_dok03")
 flicker_intensity = 0.2
 flicker_frequency = 0.1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_dok03")
+position = Vector2(0, -32)
+amount = 4
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_58nh8")
