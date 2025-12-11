@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://cced2sotnp1k3" path="res://general/scripts/level_bounds.gd" id="3_a0vjc"]
 [ext_resource type="PackedScene" uid="uid://0d7y17xhgaat" path="res://general/level transition/level_transition.tscn" id="4_3uptd"]
 [ext_resource type="PackedScene" uid="uid://b6uhs3sg506us" path="res://levels/props/Torch.tscn" id="4_t5rfd"]
-[ext_resource type="PackedScene" uid="uid://cfa3xni5hj64u" path="res://player/player.tscn" id="5_t5rfd"]
 [ext_resource type="Texture2D" uid="uid://clnfwb1s4xlt4" path="res://levels/tilesets/sprites/light_stream.jpg" id="6_8aq1i"]
+[ext_resource type="PackedScene" uid="uid://dfpqgpob1utax" path="res://general/player spawn/player_spawn.tscn" id="7_h0q2j"]
 [ext_resource type="Material" uid="uid://b5lgax312l2ic" path="res://materials and shaders/fog_fade_material.tres" id="7_q1mys"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q1mys"]
@@ -137,9 +137,6 @@ position = Vector2(394, 259)
 [node name="Torch6" parent="Props" instance=ExtResource("4_t5rfd")]
 position = Vector2(815, 228)
 
-[node name="Player" parent="." instance=ExtResource("5_t5rfd")]
-position = Vector2(53, 581)
-
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(0, 0.12868309, 0.21021533, 1)
 energy = 0.5
@@ -204,3 +201,6 @@ repeat_times = 2
 material = ExtResource("7_q1mys")
 position = Vector2(699, 421)
 texture = SubResource("NoiseTexture2D_q1mys")
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("7_h0q2j")]
+position = Vector2(64, 576)

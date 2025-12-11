@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=4 uid="uid://c78kxn4oh06r7"]
 
 [ext_resource type="TileSet" uid="uid://lpqhfgvjb1ri" path="res://levels/tilesets/crashtest_forest.tres" id="1_qdcab"]
-[ext_resource type="PackedScene" uid="uid://cfa3xni5hj64u" path="res://player/player.tscn" id="2_72dkm"]
 [ext_resource type="Script" uid="uid://cced2sotnp1k3" path="res://general/scripts/level_bounds.gd" id="3_72dkm"]
 [ext_resource type="PackedScene" uid="uid://0d7y17xhgaat" path="res://general/level transition/level_transition.tscn" id="4_tpihc"]
 [ext_resource type="PackedScene" uid="uid://28f38bmicoga" path="res://levels/props/plant.tscn" id="5_qqebs"]
 [ext_resource type="Texture2D" uid="uid://clnfwb1s4xlt4" path="res://levels/tilesets/sprites/light_stream.jpg" id="6_uw6mk"]
+[ext_resource type="PackedScene" uid="uid://dfpqgpob1utax" path="res://general/player spawn/player_spawn.tscn" id="7_d8iyc"]
 [ext_resource type="Material" uid="uid://b5lgax312l2ic" path="res://materials and shaders/fog_fade_material.tres" id="7_ofeqj"]
 
 [sub_resource type="Gradient" id="Gradient_tpihc"]
@@ -86,9 +86,6 @@ size = 9
 location = 1
 target_level = "uid://m6o38jlyeqb7"
 target_area_name = "SF02Left"
-
-[node name="Player" parent="." instance=ExtResource("2_72dkm")]
-position = Vector2(320, 312)
 
 [node name="Parallax background" type="Node2D" parent="."]
 
@@ -288,3 +285,6 @@ lifetime = 5.0
 randomness = 1.0
 visibility_rect = Rect2(-1500, -300, 3000, 800)
 process_material = SubResource("ParticleProcessMaterial_oo3w0")
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("7_d8iyc")]
+position = Vector2(64, 352)

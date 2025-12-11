@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfpqgpob1utax"]
+
+[ext_resource type="Script" uid="uid://b3y8c01vmn2ys" path="res://general/player spawn/player_spawn.gd" id="1_f3yt5"]
+[ext_resource type="Texture2D" uid="uid://dtshyuoh2po23" path="res://player/sprites/Tammie Spritesheet-Sheet.png" id="1_rc11i"]
+
+[node name="PlayerSpawn" type="Node2D"]
+script = ExtResource("1_f3yt5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1.8247963, 1.0017563, 1)
+z_index = 99
+position = Vector2(4, -40)
+texture = ExtResource("1_rc11i")
+hframes = 16
+vframes = 4
