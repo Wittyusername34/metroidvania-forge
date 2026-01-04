@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Metroidvania Forge"
-run/main_scene="uid://cq575ikwfegxh"
+run/main_scene="uid://c78kxn4oh06r7"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://dfcir1kjnhv0o"
 
 [autoload]
 
 SceneManager="*res://00_global/scene manager/scene_manager.tscn"
+SaveManager="*res://00_global/save_manager.gd"
 
 [display]
 

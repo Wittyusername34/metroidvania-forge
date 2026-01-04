@@ -8,9 +8,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	
 	if get_tree().get_first_node_in_group( "Player" ):
-		print("Player found!")
 		return
-	print("No player found...")
 	#instantiate a player instance
 	var player : Player = load("res://player/player.tscn").instantiate()
 	get_tree().root.add_child( player )
