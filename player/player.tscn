@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cfa3xni5hj64u"]
+[gd_scene load_steps=21 format=3 uid="uid://cfa3xni5hj64u"]
 
 [ext_resource type="Script" uid="uid://dtbosehmi0bt2" path="res://player/scripts/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://55xw6dqq6fdy" path="res://player/states/idle.gd" id="2_g1dw6"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://crihqjsdx4jhi" path="res://player/states/fall.gd" id="5_g6k8r"]
 [ext_resource type="Script" uid="uid://cq30fyvoy4f23" path="res://player/states/crouch.gd" id="6_g6k8r"]
 [ext_resource type="Texture2D" uid="uid://dtshyuoh2po23" path="res://player/sprites/Tammie Spritesheet-Sheet.png" id="7_boad6"]
+[ext_resource type="Script" uid="uid://d1wvac0gjgwqe" path="res://player/scripts/input_hints.gd" id="8_hg6s5"]
+[ext_resource type="Texture2D" uid="uid://cjvwxlnm17tdn" path="res://player/sprites/input_icons.png" id="8_rgyib"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_boad6"]
 radius = 8.0
@@ -205,3 +207,11 @@ position = Vector2(-4, -29)
 energy = 0.5
 texture = SubResource("GradientTexture2D_rgyib")
 texture_scale = 0.25
+
+[node name="InputHints" type="Node2D" parent="."]
+position = Vector2(0, -59)
+script = ExtResource("8_hg6s5")
+
+[node name="Sprite2D" type="Sprite2D" parent="InputHints"]
+texture = ExtResource("8_rgyib")
+hframes = 16
