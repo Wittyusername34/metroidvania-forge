@@ -1,0 +1,292 @@
+[gd_scene load_steps=9 format=3 uid="uid://cyf3e52bt31fo"]
+
+[ext_resource type="Script" uid="uid://bo3e7m7t5sj4a" path="res://pause menu/scripts/pause_menu.gd" id="1_e3xid"]
+[ext_resource type="PackedScene" uid="uid://dkaxtnfowbdau" path="res://pause menu/map_node.tscn" id="2_2q6i3"]
+
+[sub_resource type="FontVariation" id="FontVariation_e3xid"]
+spacing_glyph = 6
+
+[sub_resource type="Gradient" id="Gradient_2q6i3"]
+offsets = PackedFloat32Array(0, 0.5133333, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.48677072, 0.8586215, 1, 1, 0, 0.40675497, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8dhhk"]
+gradient = SubResource("Gradient_2q6i3")
+width = 5
+height = 5
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="Animation" id="Animation_lpd0m"]
+resource_name = "default"
+length = 0.7
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.5301336, 0.7914007, 0.9822071, 0.64000005)]
+}
+
+[sub_resource type="Animation" id="Animation_koc24"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3fk00"]
+_data = {
+&"RESET": SubResource("Animation_koc24"),
+&"default": SubResource("Animation_lpd0m")
+}
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_e3xid")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07846785, 0.1428257, 0.20285092, 0.762)
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0.0112005435, 0.05720226, 0.10625774, 1)
+
+[node name="Label" type="Label" parent="Control/ColorRect2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -7.5
+offset_right = -16.0
+offset_bottom = 7.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.90703654, 0.73675454, 1)
+theme_override_fonts/font = SubResource("FontVariation_e3xid")
+text = "PAUSED"
+horizontal_alignment = 2
+
+[node name="PauseScreen" type="Control" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Map" type="Control" parent="Control/PauseScreen"]
+anchors_preset = 0
+offset_left = 131.0
+offset_top = 15.0
+offset_right = 459.0
+offset_bottom = 191.0
+
+[node name="MapNode" parent="Control/PauseScreen/Map" instance=ExtResource("2_2q6i3")]
+modulate = Color(0.41568628, 0.74509805, 0.1882353, 1)
+layout_mode = 0
+offset_left = 24.0
+offset_top = 50.0
+offset_right = 99.0
+offset_bottom = 66.0
+linked_scene = "uid://c78kxn4oh06r7"
+entrances_right = Array[float]([5.0])
+
+[node name="MapNode2" parent="Control/PauseScreen/Map" instance=ExtResource("2_2q6i3")]
+modulate = Color(0.41568628, 0.74509805, 0.1882353, 1)
+layout_mode = 0
+offset_left = 100.0
+offset_top = 44.0
+offset_right = 142.0
+offset_bottom = 61.0
+linked_scene = "uid://m6o38jlyeqb7"
+entrances_right = Array[float]([2.0])
+entrances_left = Array[float]([11.4])
+
+[node name="MapNode3" parent="Control/PauseScreen/Map" instance=ExtResource("2_2q6i3")]
+modulate = Color(0.41568628, 0.74509805, 0.1882353, 1)
+layout_mode = 0
+offset_left = 143.0
+offset_top = 33.0
+offset_right = 189.0
+offset_bottom = 52.0
+linked_scene = "uid://c2wc7e60qrlhp"
+entrances_left = Array[float]([13.0])
+
+[node name="PlayerIndicator" type="Control" parent="Control/PauseScreen/Map"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 0
+offset_left = 29.0
+offset_top = 62.0
+offset_right = 29.0
+offset_bottom = 62.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/PauseScreen/Map/PlayerIndicator"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+texture = SubResource("GradientTexture2D_8dhhk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/PauseScreen/Map/PlayerIndicator"]
+libraries = {
+&"": SubResource("AnimationLibrary_3fk00")
+}
+autoplay = "default"
+
+[node name="Label" type="Label" parent="Control/PauseScreen"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 12.0
+offset_right = 64.0
+offset_bottom = 27.0
+text = "Abilities"
+
+[node name="Label2" type="Label" parent="Control/PauseScreen"]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 13.0
+offset_right = 169.0
+offset_bottom = 28.0
+text = "Map"
+
+[node name="SystemMenuButton" type="Button" parent="Control/PauseScreen"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 347.0
+offset_top = 194.0
+offset_right = 463.0
+offset_bottom = 217.0
+text = "System"
+
+[node name="System" type="Control" parent="Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/System"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -111.0
+offset_top = 21.0
+offset_right = 107.0
+offset_bottom = 217.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/System/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackToMapButton" type="Button" parent="Control/System/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back to Map"
+
+[node name="BackToTitleButton" type="Button" parent="Control/System/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back to Title"
+
+[node name="Label" type="Label" parent="Control/System/VBoxContainer"]
+layout_mode = 2
+text = "Audio levels"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/System/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/System/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="Control/System/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/System/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/System/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="Control/System/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/System/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/System/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "UI"
+
+[node name="UISlider" type="HSlider" parent="Control/System/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 0.5

@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=4 uid="uid://m6o38jlyeqb7"]
+[gd_scene load_steps=12 format=4 uid="uid://m6o38jlyeqb7"]
 
 [ext_resource type="TileSet" uid="uid://lpqhfgvjb1ri" path="res://levels/tilesets/crashtest_forest.tres" id="1_pisla"]
 [ext_resource type="Script" uid="uid://cced2sotnp1k3" path="res://general/scripts/level_bounds.gd" id="3_a0vjc"]
 [ext_resource type="PackedScene" uid="uid://0d7y17xhgaat" path="res://general/level transition/level_transition.tscn" id="4_3uptd"]
-[ext_resource type="PackedScene" uid="uid://b6uhs3sg506us" path="res://levels/props/Torch.tscn" id="4_t5rfd"]
 [ext_resource type="Texture2D" uid="uid://clnfwb1s4xlt4" path="res://levels/tilesets/sprites/light_stream.jpg" id="6_8aq1i"]
 [ext_resource type="PackedScene" uid="uid://dfpqgpob1utax" path="res://general/player spawn/player_spawn.tscn" id="7_h0q2j"]
 [ext_resource type="Material" uid="uid://b5lgax312l2ic" path="res://materials and shaders/fog_fade_material.tres" id="7_q1mys"]
@@ -12,23 +11,15 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q1mys"]
 blend_mode = 1
 
-[sub_resource type="Gradient" id="Gradient_uw6mk"]
-colors = PackedColorArray(0.52246845, 0.86296767, 0.9999998, 0, 0.77254903, 0.77254903, 0.77254903, 0.6117647)
+[sub_resource type="Gradient" id="Gradient_q1mys"]
+colors = PackedColorArray(0.52246845, 0.86296767, 0.9999998, 0, 1, 1, 1, 0.5764706)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ofeqj"]
-frequency = 0.023
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h0q2j"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h0q2j"]
 height = 256
-noise = SubResource("FastNoiseLite_ofeqj")
-color_ramp = SubResource("Gradient_uw6mk")
-seamless = true
-normalize = false
-seamless_blend_skirt = 0.5
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q1mys"]
-noise = SubResource("FastNoiseLite_ofeqj")
-color_ramp = SubResource("Gradient_uw6mk")
+noise = SubResource("FastNoiseLite_h0q2j")
+color_ramp = SubResource("Gradient_q1mys")
 seamless = true
 normalize = false
 seamless_blend_skirt = 0.5
@@ -118,31 +109,6 @@ location = 1
 target_level = "uid://c2wc7e60qrlhp"
 target_area_name = "SF03Left"
 
-[node name="Props" type="Node2D" parent="."]
-
-[node name="Torch" parent="Props" instance=ExtResource("4_t5rfd")]
-position = Vector2(301, 581)
-
-[node name="Torch2" parent="Props" instance=ExtResource("4_t5rfd")]
-position = Vector2(955, 549)
-
-[node name="Torch3" parent="Props" instance=ExtResource("4_t5rfd")]
-position = Vector2(1360, 517)
-
-[node name="Torch4" parent="Props" instance=ExtResource("4_t5rfd")]
-position = Vector2(1064, 451)
-
-[node name="Torch5" parent="Props" instance=ExtResource("4_t5rfd")]
-position = Vector2(394, 259)
-
-[node name="Torch6" parent="Props" instance=ExtResource("4_t5rfd")]
-position = Vector2(815, 228)
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-color = Color(0, 0.12868309, 0.21021533, 1)
-energy = 0.5
-blend_mode = 2
-
 [node name="SavePoint" parent="." instance=ExtResource("8_h0q2j")]
 position = Vector2(416, 576)
 
@@ -151,60 +117,47 @@ scroll_scale = Vector2(1.3, 1)
 scroll_offset = Vector2(-75, -31)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Lights 2"]
-modulate = Color(0.5923317, 0.93202096, 0.9999998, 0.32941177)
+modulate = Color(1, 0.8666667, 0.10980392, 0.32941177)
 z_index = 2
 material = SubResource("CanvasItemMaterial_q1mys")
-position = Vector2(1159, -22.000032)
+position = Vector2(1158.9359, -24.963991)
 rotation = 0.59774673
 scale = Vector2(1, 1.1757813)
 texture = ExtResource("6_8aq1i")
 offset = Vector2(0, 256)
 
 [node name="Sprite2D3" type="Sprite2D" parent="Lights 2"]
-modulate = Color(0.5923317, 0.93202096, 0.9999998, 0.32941177)
+modulate = Color(1, 0.8666667, 0.10980392, 0.32941177)
 z_index = 2
 material = SubResource("CanvasItemMaterial_q1mys")
-position = Vector2(1680.1649, -0.7827015)
+position = Vector2(1680.1008, -3.7466602)
 rotation = 0.59774673
 scale = Vector2(0.47342968, 1.1757813)
 texture = ExtResource("6_8aq1i")
 offset = Vector2(0, 256)
 
 [node name="Sprite2D4" type="Sprite2D" parent="Lights 2"]
-modulate = Color(0.5923317, 0.93202096, 0.9999998, 0.32941177)
+modulate = Color(1, 0.8666667, 0.10980392, 0.32941177)
 z_index = 2
 material = SubResource("CanvasItemMaterial_q1mys")
-position = Vector2(505.99997, 28.999998)
+position = Vector2(515, -1.0000019)
 rotation = 0.59774673
 scale = Vector2(0.56841564, 1.1757813)
 texture = ExtResource("6_8aq1i")
 offset = Vector2(0, 256)
 
+[node name="PlayerSpawn" parent="." instance=ExtResource("7_h0q2j")]
+position = Vector2(64, 576)
+
 [node name="Fog Parallax2D" type="Parallax2D" parent="."]
 z_index = 3
 scroll_scale = Vector2(1.3, 1)
-scroll_offset = Vector2(5, 27)
+scroll_offset = Vector2(128, 176)
 repeat_size = Vector2(512, 0)
 autoscroll = Vector2(5, 0)
 repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Fog Parallax2D"]
 material = ExtResource("7_q1mys")
-position = Vector2(699, 549)
+position = Vector2(640, 528)
 texture = SubResource("NoiseTexture2D_h0q2j")
-
-[node name="Fog Parallax2D2" type="Parallax2D" parent="."]
-z_index = 3
-scroll_scale = Vector2(1.5, 1)
-scroll_offset = Vector2(5, 27)
-repeat_size = Vector2(512, 0)
-autoscroll = Vector2(5, 0)
-repeat_times = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="Fog Parallax2D2"]
-material = ExtResource("7_q1mys")
-position = Vector2(699, 421)
-texture = SubResource("NoiseTexture2D_q1mys")
-
-[node name="PlayerSpawn" parent="." instance=ExtResource("7_h0q2j")]
-position = Vector2(64, 576)
