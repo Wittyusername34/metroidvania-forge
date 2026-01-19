@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c2wc7e60qrlhp"]
+[gd_scene load_steps=15 format=4 uid="uid://c2wc7e60qrlhp"]
 
 [ext_resource type="TileSet" uid="uid://lpqhfgvjb1ri" path="res://levels/tilesets/crashtest_forest.tres" id="1_4t1jj"]
 [ext_resource type="Script" uid="uid://cced2sotnp1k3" path="res://general/scripts/level_bounds.gd" id="3_u1i3v"]
@@ -7,6 +7,9 @@
 [ext_resource type="Material" uid="uid://b5lgax312l2ic" path="res://materials and shaders/fog_fade_material.tres" id="5_eci75"]
 [ext_resource type="PackedScene" uid="uid://bgxd8vlj0xdfp" path="res://general/door_and_switch/door.tscn" id="6_w4ouh"]
 [ext_resource type="PackedScene" uid="uid://rd6jq2thih50" path="res://general/door_and_switch/switch.tscn" id="7_v7lr7"]
+[ext_resource type="Texture2D" uid="uid://clnfwb1s4xlt4" path="res://levels/tilesets/sprites/light_stream.jpg" id="8_yllec"]
+[ext_resource type="Script" uid="uid://11wam0e7xdau" path="res://music/music_auto_trigger.gd" id="9_vks4s"]
+[ext_resource type="AudioStream" uid="uid://ca6muk2dlkiu2" path="res://music/dungeon_01.ogg" id="10_pkwts"]
 
 [sub_resource type="Gradient" id="Gradient_ofeqj"]
 colors = PackedColorArray(0.52246845, 0.86296767, 0.9999998, 0, 1, 1, 1, 0.5764706)
@@ -20,6 +23,9 @@ color_ramp = SubResource("Gradient_ofeqj")
 seamless = true
 normalize = false
 seamless_blend_skirt = 0.5
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4ikkt"]
+blend_mode = 1
 
 [node name="03_Spadeleaf_Forest" type="Node2D"]
 
@@ -60,7 +66,7 @@ tile_map_data = PackedByteArray("AAAOAAUAAQAXAAkAAAAOAAYAAQAXAAoAAAAOAAcAAQAXAAs
 tile_set = ExtResource("1_4t1jj")
 
 [node name="Background Platforms" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAMAAsAAQATAA0AAAAMAAwAAQATAA4AAAAMAA0AAQATAA8AAAAMAA4AAQATAA8AAAAMAA8AAQATAA8AAAAMABAAAQATAA8AAAAMABEAAQATAA8AAAAMABIAAQATAA8AAAANAAsAAQAUAA0AAAANAAwAAQAUAA4AAAANAA0AAQAUAA8AAAANAA4AAQAUAA8AAAANAA8AAQAUAA8AAAANABAAAQAUAA8AAAANABEAAQAUAA8AAAANABIAAQAUAA8AAAAOAAsAAQAVAA0AAAAOAAwAAQAVAA4AAAAOAA0AAQAVAA8AAAAOAA4AAQAVAA8AAAAOAA8AAQAUAA8AAAAOABAAAQAUAA8AAAAOABEAAQAUAA8AAAAOABIAAQAUAA8AAAAPAAsAAQAVAA0AAAAPAAwAAQAVAA4AAAAPAA0AAQAVAA8AAAAPAA4AAQAVAA8AAAAPAA8AAQAVAA8AAAAPABAAAQAVAA8AAAAPABEAAQAVAA8AAAAPABIAAQAVAA8AAAAQAAsAAQAWAA0AAAAQAAwAAQAWAA4AAAAQAA0AAQAWAA8AAAAQAA4AAQAWAA8AAAAQAA8AAQAWAA8AAAAQABAAAQAWAA8AAAAQABEAAQAWAA8AAAAQABIAAQAWAA8AAAA=")
+tile_map_data = PackedByteArray("AAAMAAsAAQATAA0AAAAMAAwAAQATAA4AAAAMAA0AAQATAA8AAAAMAA4AAQATAA8AAAAMAA8AAQATAA8AAAAMABAAAQATAA8AAAAMABEAAQATAA8AAAAMABIAAQATAA8AAAANAAsAAQAUAA0AAAANAAwAAQAUAA4AAAANAA0AAQAUAA8AAAANAA4AAQAUAA8AAAANAA8AAQAUAA8AAAANABAAAQAUAA8AAAANABEAAQAUAA8AAAANABIAAQAUAA8AAAAOAAsAAQAVAA0AAAAOAAwAAQAVAA4AAAAOAA0AAQAVAA8AAAAOAA4AAQAVAA8AAAAOAA8AAQAUAA8AAAAOABAAAQAUAA8AAAAOABEAAQAUAA8AAAAOABIAAQAUAA8AAAAPAAsAAQAVAA0AAAAPAAwAAQAVAA4AAAAPAA0AAQAVAA8AAAAPAA4AAQAVAA8AAAAPAA8AAQAVAA8AAAAPABAAAQAVAA8AAAAPABEAAQAVAA8AAAAPABIAAQAVAA8AAAAQAAsAAQAWAA0AAAAQAAwAAQAWAA4AAAAQAA0AAQAWAA8AAAAQAA4AAQAWAA8AAAAQAA8AAQAWAA8AAAAQABAAAQAWAA8AAAAQABEAAQAWAA8AAAAQABIAAQAWAA8AAAASAAkAAQAQAAYAAAATAAkAAQARAAYAAAAUAAkAAQATAAYAAAA=")
 tile_set = ExtResource("1_4t1jj")
 
 [node name="Midground Platforms" type="TileMapLayer" parent="."]
@@ -115,3 +121,43 @@ position = Vector2(721, 574)
 
 [node name="Switch" parent="Door" instance=ExtResource("7_v7lr7")]
 position = Vector2(95, 5)
+
+[node name="Lights 2" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1.3, 1)
+scroll_offset = Vector2(-75, -31)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Lights 2"]
+modulate = Color(1, 0.8666667, 0.10980392, 0.32941177)
+z_index = 2
+material = SubResource("CanvasItemMaterial_4ikkt")
+position = Vector2(448, -25.00001)
+rotation = 0.59774673
+scale = Vector2(1, 1.1757813)
+texture = ExtResource("8_yllec")
+offset = Vector2(0, 256)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Lights 2"]
+modulate = Color(1, 0.8666667, 0.10980392, 0.32941177)
+z_index = 2
+material = SubResource("CanvasItemMaterial_4ikkt")
+position = Vector2(1680.1008, -3.7466602)
+rotation = 0.59774673
+scale = Vector2(0.47342968, 1.1757813)
+texture = ExtResource("8_yllec")
+offset = Vector2(0, 256)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Lights 2"]
+modulate = Color(1, 0.8666667, 0.10980392, 0.32941177)
+z_index = 2
+material = SubResource("CanvasItemMaterial_4ikkt")
+position = Vector2(890.00006, -9.000015)
+rotation = 0.59774673
+scale = Vector2(0.56841564, 1.1757813)
+texture = ExtResource("8_yllec")
+offset = Vector2(0, 256)
+
+[node name="MusicAutoTrigger" type="Node" parent="."]
+script = ExtResource("9_vks4s")
+track = ExtResource("10_pkwts")
+reverb = 1
+metadata/_custom_type_script = "uid://11wam0e7xdau"

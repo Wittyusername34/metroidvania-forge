@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://m6o38jlyeqb7"]
+[gd_scene load_steps=14 format=4 uid="uid://m6o38jlyeqb7"]
 
 [ext_resource type="TileSet" uid="uid://lpqhfgvjb1ri" path="res://levels/tilesets/crashtest_forest.tres" id="1_pisla"]
 [ext_resource type="Script" uid="uid://cced2sotnp1k3" path="res://general/scripts/level_bounds.gd" id="3_a0vjc"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://clnfwb1s4xlt4" path="res://levels/tilesets/sprites/light_stream.jpg" id="6_8aq1i"]
 [ext_resource type="PackedScene" uid="uid://dfpqgpob1utax" path="res://general/player spawn/player_spawn.tscn" id="7_h0q2j"]
 [ext_resource type="Material" uid="uid://b5lgax312l2ic" path="res://materials and shaders/fog_fade_material.tres" id="7_q1mys"]
+[ext_resource type="Script" uid="uid://11wam0e7xdau" path="res://music/music_auto_trigger.gd" id="8_a6qcx"]
 [ext_resource type="PackedScene" uid="uid://b5h7m6ap8g7s2" path="res://general/save_point/save_point.tscn" id="8_h0q2j"]
+[ext_resource type="AudioStream" uid="uid://doarsgnjjr2xr" path="res://music/forest_01.ogg" id="9_n2we1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q1mys"]
 blend_mode = 1
@@ -161,3 +163,8 @@ repeat_times = 2
 material = ExtResource("7_q1mys")
 position = Vector2(640, 528)
 texture = SubResource("NoiseTexture2D_h0q2j")
+
+[node name="MusicAutoTrigger" type="Node" parent="."]
+script = ExtResource("8_a6qcx")
+track = ExtResource("9_n2we1")
+metadata/_custom_type_script = "uid://11wam0e7xdau"
