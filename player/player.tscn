@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cfa3xni5hj64u"]
+[gd_scene load_steps=22 format=3 uid="uid://cfa3xni5hj64u"]
 
 [ext_resource type="Script" uid="uid://dtbosehmi0bt2" path="res://player/scripts/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://55xw6dqq6fdy" path="res://player/states/idle.gd" id="2_g1dw6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://crihqjsdx4jhi" path="res://player/states/fall.gd" id="5_g6k8r"]
 [ext_resource type="Script" uid="uid://cq30fyvoy4f23" path="res://player/states/crouch.gd" id="6_g6k8r"]
 [ext_resource type="Texture2D" uid="uid://dtshyuoh2po23" path="res://player/sprites/Tammie Spritesheet-Sheet.png" id="7_boad6"]
+[ext_resource type="Script" uid="uid://ct3uqe58wdbge" path="res://player/scripts/player_camera.gd" id="8_8t03j"]
 [ext_resource type="Script" uid="uid://d1wvac0gjgwqe" path="res://player/scripts/input_hints.gd" id="8_hg6s5"]
 [ext_resource type="Texture2D" uid="uid://cjvwxlnm17tdn" path="res://player/sprites/input_icons.png" id="8_rgyib"]
 
@@ -200,6 +201,7 @@ collision_mask = 2
 process_mode = 3
 position = Vector2(-2, -39)
 zoom = Vector2(0.75, 0.75)
+script = ExtResource("8_8t03j")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false

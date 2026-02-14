@@ -52,6 +52,7 @@ func process( delta: float ) -> PlayerState:
 #what happens each physics_process tick in this state?
 func physics_process( _delta: float ) -> PlayerState:
 	if player.is_on_floor():
+		VisualEffects.land_dust( player.global_position )
 		#player.add_debug_indicator( )
 		if buffer_timer > 0: #and Input.is_action_pressed( "jump" ):
 			return jump

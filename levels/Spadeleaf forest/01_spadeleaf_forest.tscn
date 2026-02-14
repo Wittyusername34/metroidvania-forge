@@ -40,11 +40,11 @@ seamless_blend_skirt = 0.5
 blend_mode = 1
 light_mode = 1
 
-[sub_resource type="Gradient" id="Gradient_d8iyc"]
+[sub_resource type="Gradient" id="Gradient_oo3w0"]
 colors = PackedColorArray(0.61045206, 1, 0.5, 1, 0.61055017, 1, 0.49995556, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_spuie"]
-gradient = SubResource("Gradient_d8iyc")
+gradient = SubResource("Gradient_oo3w0")
 width = 16
 height = 16
 fill = 1
@@ -56,7 +56,7 @@ metadata/_snap_enabled = true
 offsets = PackedFloat32Array(0, 0.35849056, 0.6792453, 1)
 colors = PackedColorArray(0, 0, 0, 1, 1, 0.99323857, 0.99323857, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_oo3w0"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_klpud"]
 gradient = SubResource("Gradient_spuie")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oo3w0"]
@@ -67,7 +67,7 @@ initial_velocity_max = 300.0
 gravity = Vector3(0, 10, 0)
 scale_min = 0.75
 scale_max = 1.25
-color_ramp = SubResource("GradientTexture1D_oo3w0")
+color_ramp = SubResource("GradientTexture1D_klpud")
 hue_variation_min = -0.32000002
 hue_variation_max = 0.049999975
 turbulence_enabled = true
