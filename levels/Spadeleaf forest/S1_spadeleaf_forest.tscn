@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://8o6w0tejlisf"]
+[gd_scene load_steps=16 format=4 uid="uid://8o6w0tejlisf"]
 
 [ext_resource type="TileSet" uid="uid://lpqhfgvjb1ri" path="res://levels/tilesets/crashtest_forest.tres" id="1_he6aw"]
 [ext_resource type="Script" uid="uid://cced2sotnp1k3" path="res://general/scripts/level_bounds.gd" id="2_i0s62"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://11wam0e7xdau" path="res://music/music_auto_trigger.gd" id="7_beoqf"]
 [ext_resource type="AudioStream" uid="uid://ca6muk2dlkiu2" path="res://music/dungeon_01.ogg" id="8_bqon5"]
 [ext_resource type="PackedScene" uid="uid://b6uhs3sg506us" path="res://levels/props/Torch.tscn" id="8_he6aw"]
+[ext_resource type="AudioStream" uid="uid://brhlig7gcdnh0" path="res://general/audio/hit.wav" id="10_rhabe"]
+[ext_resource type="Script" uid="uid://b322kl12r3ws1" path="res://general/scripts/damage_area.gd" id="10_ylq21"]
 
 [sub_resource type="Gradient" id="Gradient_ofeqj"]
 colors = PackedColorArray(0.52246845, 0.86296767, 0.9999998, 0, 1, 1, 1, 0.5764706)
@@ -21,6 +23,10 @@ color_ramp = SubResource("Gradient_ofeqj")
 seamless = true
 normalize = false
 seamless_blend_skirt = 0.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2w8l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0s62"]
 
 [node name="03_Spadeleaf_Forest" type="Node2D"]
 
@@ -99,3 +105,24 @@ script = ExtResource("7_beoqf")
 track = ExtResource("8_bqon5")
 reverb = 1
 metadata/_custom_type_script = "uid://11wam0e7xdau"
+
+[node name="DamageArea" type="Area2D" parent="."]
+position = Vector2(400, 211)
+collision_layer = 96
+collision_mask = 0
+script = ExtResource("10_ylq21")
+audio = ExtResource("10_rhabe")
+metadata/_custom_type_script = "uid://b322kl12r3ws1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("RectangleShape2D_h2w8l")
+debug_color = Color(0, 0.036615796, 0.70196074, 0.41960785)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(649, 256)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_i0s62")
+debug_color = Color(0, 0.70196074, 0.63515043, 0.41960785)
