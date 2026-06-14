@@ -2,15 +2,21 @@ class_name Player extends CharacterBody2D
 
 const DEBUG_JUMP_INDICATOR = preload("uid://1n5lkptfbcul")
 
+#region // signals
+signal damage_taken
+#endregion
 
 #region /// On Ready Variables
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var attack_sprite: Sprite2D = %AttackSprite2D
 @onready var collision_stand: CollisionShape2D = $CollisionStand
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
+@onready var da_stand: CollisionShape2D = %DAStand
+@onready var da_crouch: CollisionShape2D = %DACrouch
 @onready var one_way_platform_shapecast: ShapeCast2D = $OneWayPlayformShapeCast
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var attack_area: AttackArea = %AttackArea
+@onready var damage_area: DamageArea = %DamageArea
 
 #endregion
 
@@ -39,7 +45,8 @@ var max_hp : float = 20 :
 		Messages.player_health_changed.emit( hp, max_hp)
 
 var dash : bool = false
-var double_jump : bool = false
+var double_jump : bool = true
+var jump_count : int = 0
 var ground_slam : bool = false
 var morph_roll : bool = false
 #endregion
@@ -59,6 +66,8 @@ func  _ready() -> void:
 	self.call_deferred( "reparent", get_tree().root )
 	Messages.player_healed.connect( _on_player_healed )
 	Messages.back_to_title_screen.connect( queue_free )
+	damage_area.damage_taken.connect( _on_damage_taken )
+	hp = max_hp
 	pass
 
 
@@ -182,4 +191,13 @@ func add_debug_indicator( color : Color = Color.RED ) -> void:
 
 func _on_player_healed( amount : float ) -> void:
 	hp += amount
+	pass
+
+
+
+func _on_damage_taken( attack_area : AttackArea ) -> void:
+	if current_state == PlayerStateDeath:
+		return
+	hp -= attack_area.damage
+	damage_taken.emit()
 	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://8o6w0tejlisf"]
+[gd_scene load_steps=15 format=4 uid="uid://8o6w0tejlisf"]
 
 [ext_resource type="TileSet" uid="uid://lpqhfgvjb1ri" path="res://levels/tilesets/crashtest_forest.tres" id="1_he6aw"]
 [ext_resource type="Script" uid="uid://cced2sotnp1k3" path="res://general/scripts/level_bounds.gd" id="2_i0s62"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://ca6muk2dlkiu2" path="res://music/dungeon_01.ogg" id="8_bqon5"]
 [ext_resource type="PackedScene" uid="uid://b6uhs3sg506us" path="res://levels/props/Torch.tscn" id="8_he6aw"]
 [ext_resource type="PackedScene" uid="uid://0gkoq16nktsr" path="res://levels/props/test_dummy/test_dummy.tscn" id="9_i0s62"]
+[ext_resource type="PackedScene" uid="uid://dcq1825l8xtt0" path="res://levels/props/test_dummy/spike_dummy.tscn" id="11_rhabe"]
 
 [sub_resource type="Gradient" id="Gradient_ofeqj"]
 colors = PackedColorArray(0.52246845, 0.86296767, 0.9999998, 0, 1, 1, 1, 0.5764706)
@@ -90,7 +91,7 @@ target_level = "uid://d27eyekgq2rwi"
 target_area_name = "SF04Left_Bottom"
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("4_rhabe")]
-position = Vector2(96, 240)
+position = Vector2(213, 292)
 
 [node name="Fog Parallax2D" type="Parallax2D" parent="."]
 z_index = 3
@@ -113,4 +114,6 @@ metadata/_custom_type_script = "uid://11wam0e7xdau"
 
 [node name="TestDummy" parent="." instance=ExtResource("9_i0s62")]
 position = Vector2(444, 293)
-base_wobble_angle = 4.0
+
+[node name="SpikeDummy" parent="." instance=ExtResource("11_rhabe")]
+position = Vector2(511, 293)
