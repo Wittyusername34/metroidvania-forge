@@ -42,7 +42,6 @@ position = Vector2(0, -25)
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("5_83dbo")
-damage = 10.0
 metadata/_custom_type_script = "uid://wh0g6gvpirr4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodySprite/HazardArea"]
@@ -54,7 +53,7 @@ position = Vector2(0, -6)
 texture = SubResource("AtlasTexture_dr2jp")
 
 [node name="DamageArea" type="Area2D" parent="."]
-collision_layer = 96
+collision_layer = 32
 collision_mask = 0
 script = ExtResource("6_i5llc")
 audio = ExtResource("7_osguj")

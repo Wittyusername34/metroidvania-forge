@@ -29,7 +29,7 @@ func _ready() -> void:
 
 func _on_pressed() -> void:
 	var player : Player = get_tree().get_first_node_in_group( \"Player\" )
-	player.double_jump = !player.double_jump
+	player.dash = !player.dash
 	pass
 "
 
@@ -89,8 +89,7 @@ offset_left = 356.0
 offset_top = 4.0
 offset_right = 476.0
 offset_bottom = 27.0
-text = "Test Game over
-"
+text = "Toggle dash"
 script = SubResource("GDScript_vb1bs")
 particle_settings = ExtResource("3_26715")
 
