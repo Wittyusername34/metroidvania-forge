@@ -154,7 +154,6 @@ position = Vector2(446, 512)
 
 [node name="AbilityPickup" parent="." instance=ExtResource("14_beoqf")]
 position = Vector2(134, 175)
-type = 0
 
 [node name="AbilityPickup2" parent="." instance=ExtResource("14_beoqf")]
 position = Vector2(175, 175)

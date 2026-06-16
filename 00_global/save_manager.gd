@@ -98,7 +98,7 @@ func load_game( slot : int ) -> void:
 	var save_file = FileAccess.open( get_file_name( current_slot ), FileAccess.READ )
 	save_data = JSON.parse_string( save_file.get_line() )
 	
-	persistent_data = save_data.get( "persistant_data", {} )
+	persistent_data = save_data.get( "persistent_data", {} )
 	discovered_areas = save_data.get( "discovered_areas", [] )
 	var scene_path : String = save_data.get( "scene_path", "uid://c78kxn4oh06r7" )
 	SceneManager.transition_scene( scene_path, "", Vector2.ZERO, "up" )

@@ -22,9 +22,6 @@ func _ready() -> void:
 		return
 	
 	if SaveManager.persistent_data.get_or_add( get_ability_name(), "" ) == "acquired":
-		#DEBUG// For some reason line above doesn't return true, print statement below is never hit.
-		#Line looks identical to Michaels but won't run for some reason.
-		#print(SaveManager.persistent_data[ get_ability_name() ] )
 		queue_free()
 		return
 	
@@ -42,8 +39,6 @@ func _on_damage_taken() -> void:
 
 func _on_destroyed() -> void:
 	SaveManager.persistent_data[ get_ability_name() ] = "acquired"
-	#DEBUG// print statement below confirms that the _on_destroy func works, it's adding "acquired" to the file
-	#print(SaveManager.persistent_data[ get_ability_name() ] )
 	_reward_ability()
 	orb_anim.play("destroy")
 	await orb_anim.animation_finished

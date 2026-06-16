@@ -233,7 +233,6 @@ radius = 20.0
 [node name="AbilityPickup" type="Node2D"]
 z_index = 1
 script = ExtResource("1_xxigd")
-type = null
 
 [node name="AbilitySprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
