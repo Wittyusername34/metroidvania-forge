@@ -84,6 +84,7 @@ texture_under = SubResource("GradientTexture2D_hv14i")
 texture_progress = SubResource("GradientTexture2D_26715")
 
 [node name="Button" type="Button" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 356.0
 offset_top = 4.0

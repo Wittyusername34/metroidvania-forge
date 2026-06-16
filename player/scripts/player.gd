@@ -44,12 +44,13 @@ var max_hp : float = 20 :
 		max_hp = value
 		Messages.player_health_changed.emit( hp, max_hp)
 
-var dash : bool = true
+var dash : bool = false
 var dash_count : int = 0
-var double_jump : bool = true
+var double_jump : bool = false
 var jump_count : int = 0
-var ground_slam : bool = true
+var ground_slam : bool = false
 var morph_roll : bool = false
+var can_interact : bool = false
 #endregion
 
 #region /// Standard Variables
@@ -67,6 +68,7 @@ func  _ready() -> void:
 	self.call_deferred( "reparent", get_tree().root )
 	Messages.player_healed.connect( _on_player_healed )
 	Messages.back_to_title_screen.connect( queue_free )
+	Messages.input_hint_changed.connect( _on_input_hint_changed )
 	damage_area.damage_taken.connect( _on_damage_taken )
 	hp = max_hp
 	pass
@@ -205,7 +207,23 @@ func _on_damage_taken( attack_area : AttackArea ) -> void:
 
 
 
+func _on_input_hint_changed( prompt_name : String ) -> void:
+	if prompt_name == "interact":
+		can_interact = true
+	else:
+		can_interact = false
+	pass
+
+
+
 func can_dash() -> bool:
 	if dash == false or dash_count > 0:
+		return false
+	return true
+
+
+
+func can_morph() -> bool:
+	if morph_roll == false or can_interact == true:
 		return false
 	return true

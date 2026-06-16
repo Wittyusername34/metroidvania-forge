@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyf3e52bt31fo"]
+[gd_scene load_steps=16 format=3 uid="uid://cyf3e52bt31fo"]
 
 [ext_resource type="Script" uid="uid://bo3e7m7t5sj4a" path="res://pause menu/scripts/pause_menu.gd" id="1_e3xid"]
 [ext_resource type="PackedScene" uid="uid://dkaxtnfowbdau" path="res://pause menu/map_node.tscn" id="2_2q6i3"]
+[ext_resource type="Script" uid="uid://n4df00tjj0xf" path="res://pause menu/scripts/abilities_list.gd" id="3_8dhhk"]
 
 [sub_resource type="FontVariation" id="FontVariation_e3xid"]
 spacing_glyph = 6
@@ -58,6 +59,28 @@ _data = {
 &"default": SubResource("Animation_lpd0m")
 }
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8dhhk"]
+load_path = "res://.godot/imported/abilities.png-63196a83fde4f4f8174494127ae437fd.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpd0m"]
+atlas = SubResource("CompressedTexture2D_8dhhk")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2q6i3"]
+load_path = "res://.godot/imported/abilities.png-63196a83fde4f4f8174494127ae437fd.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koc24"]
+atlas = SubResource("CompressedTexture2D_2q6i3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fk00"]
+atlas = SubResource("CompressedTexture2D_2q6i3")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jgcs"]
+atlas = SubResource("CompressedTexture2D_2q6i3")
+region = Rect2(32, 96, 32, 32)
+
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_e3xid")
@@ -107,7 +130,6 @@ horizontal_alignment = 2
 
 [node name="PauseScreen" type="Control" parent="Control"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -152,6 +174,7 @@ offset_top = 33.0
 offset_right = 189.0
 offset_bottom = 52.0
 linked_scene = "uid://c2wc7e60qrlhp"
+entrances_right = Array[float]([12.2])
 entrances_left = Array[float]([13.0])
 
 [node name="PlayerIndicator" type="Control" parent="Control/PauseScreen/Map"]
@@ -202,8 +225,45 @@ offset_right = 463.0
 offset_bottom = 217.0
 text = "System"
 
+[node name="AbilitiesList" type="VBoxContainer" parent="Control/PauseScreen"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 35.0
+offset_right = 44.0
+offset_bottom = 175.0
+script = ExtResource("3_8dhhk")
+
+[node name="AbilityDoubleJump" type="TextureRect" parent="Control/PauseScreen/AbilitiesList"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_lpd0m")
+stretch_mode = 3
+
+[node name="AbilityDash" type="TextureRect" parent="Control/PauseScreen/AbilitiesList"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_koc24")
+stretch_mode = 3
+
+[node name="AbilityGroundSlam" type="TextureRect" parent="Control/PauseScreen/AbilitiesList"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_3fk00")
+stretch_mode = 3
+
+[node name="AbilityMorphRoll" type="TextureRect" parent="Control/PauseScreen/AbilitiesList"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_6jgcs")
+stretch_mode = 3
+
 [node name="System" type="Control" parent="Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
