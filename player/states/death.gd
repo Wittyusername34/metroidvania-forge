@@ -12,7 +12,7 @@ func init() -> void:
 # What happens when we enter this state?
 func enter() -> void:
 	player.animation_player.play( "death" )
-	Audio.play_spacial_sound( DEATH_AUDIO, player.global_position )
+	Audio.play_spatial_sound( DEATH_AUDIO, player.global_position, true, false, )
 	Audio.play_music( null )
 	await player.animation_player.animation_finished
 	PlayerHud.show_game_over()

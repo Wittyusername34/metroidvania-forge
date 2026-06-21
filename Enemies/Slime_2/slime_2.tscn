@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ypwqo7a5vu12"]
+[gd_scene load_steps=22 format=3 uid="uid://ypwqo7a5vu12"]
 
 [ext_resource type="Script" uid="uid://u6oystx2hu5s" path="res://Enemies/scripts/enemy.gd" id="1_343ob"]
 [ext_resource type="Texture2D" uid="uid://l5uo3iuhclgr" path="res://Enemies/slime/slime.png" id="2_1o5i2"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://ba52v41qgd42s" path="res://Enemies/scripts/states/es_stun.gd" id="10_gij2k"]
 [ext_resource type="AudioStream" uid="uid://biqpfs4gs8h3r" path="res://Enemies/slime/slime_death.wav" id="11_nsw6a"]
 [ext_resource type="Script" uid="uid://5d5f8beoro41" path="res://Enemies/scripts/sensors/edge_sensor.gd" id="12_nsw6a"]
+[ext_resource type="Script" uid="uid://dlpx5glre3wsk" path="res://Enemies/scripts/sensors/player_sensor.gd" id="13_gij2k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1o5i2"]
 radius = 8.0
@@ -95,6 +96,29 @@ _data = {
 &"walk": SubResource("Animation_hpdxi")
 }
 
+[sub_resource type="GDScript" id="GDScript_gij2k"]
+script/source = "extends Label
+
+@onready var player_sensor: PlayerSensor = $\"../PlayerSensor\"
+@onready var slime_2: Enemy = $\"..\"
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(_delta: float) -> void:
+	text = \"\"
+	text = \"Target = \" 
+	text += slime_2.blackboard.target.name if slime_2.blackboard.target else \"\"
+	text += \"\\n dist = \"
+	text += str( slime_2.blackboard.distance_to_target )
+	pass
+"
+
 [node name="Slime2" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 3
@@ -171,3 +195,19 @@ position = Vector2(4, 1)
 target_position = Vector2(0, 7)
 script = ExtResource("12_nsw6a")
 metadata/_custom_type_script = "uid://5d5f8beoro41"
+
+[node name="PlayerSensor" type="Area2D" parent="."]
+position = Vector2(0, -7)
+script = ExtResource("13_gij2k")
+min_audio_sense = 0.4
+metadata/_custom_type_script = "uid://dlpx5glre3wsk"
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="PlayerSensor"]
+polygon = PackedVector2Array(0, 0, 256, -128, 256, 128)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -39.0
+offset_right = 20.0
+offset_bottom = -24.0
+script = SubResource("GDScript_gij2k")

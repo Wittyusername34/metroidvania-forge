@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cfa3xni5hj64u"]
+[gd_scene load_steps=43 format=3 uid="uid://cfa3xni5hj64u"]
 
 [ext_resource type="Script" uid="uid://dtbosehmi0bt2" path="res://player/scripts/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://55xw6dqq6fdy" path="res://player/states/idle.gd" id="2_g1dw6"]
@@ -21,8 +21,6 @@
 [ext_resource type="Script" uid="uid://on48wikkvpw" path="res://player/scripts/player_sprite.gd" id="12_x7c3f"]
 [ext_resource type="Script" uid="uid://b322kl12r3ws1" path="res://general/scripts/damage_area.gd" id="14_kb6p2"]
 [ext_resource type="AudioStream" uid="uid://2nyikh1dnayc" path="res://general/audio/aargh.wav" id="16_32hag"]
-[ext_resource type="AudioStream" uid="uid://b0l6pik0wpskn" path="res://general/audio/jump.wav" id="18_c35mf"]
-[ext_resource type="AudioStream" uid="uid://bjxnxnlpc0kat" path="res://general/audio/land.wav" id="19_65viv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_boad6"]
 radius = 8.0
@@ -575,18 +573,6 @@ debug_color = Color(0, 0.6, 0.69803923, 0.24313726)
 unique_name_in_owner = true
 position = Vector2(0, -29)
 stream = ExtResource("16_32hag")
-bus = &"SFX"
-
-[node name="JumpAudio" type="AudioStreamPlayer2D" parent="AudioStreams"]
-unique_name_in_owner = true
-position = Vector2(0, -29)
-stream = ExtResource("18_c35mf")
-bus = &"SFX"
-
-[node name="LandAudio" type="AudioStreamPlayer2D" parent="AudioStreams"]
-unique_name_in_owner = true
-position = Vector2(0, -29)
-stream = ExtResource("19_65viv")
 bus = &"SFX"
 
 [node name="BallRays" type="Node2D" parent="."]

@@ -170,3 +170,4 @@ type = 3
 
 [node name="Slime2" parent="." instance=ExtResource("15_bqon5")]
 position = Vector2(179, 484)
+face_left_on_start = false

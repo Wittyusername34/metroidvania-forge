@@ -8,7 +8,10 @@ signal was_killed()
 
 @export var health : float = 3
 @export var affected_by_gravity : bool = false
-@export var face_left_on_start : bool = false
+@export var face_left_on_start : bool = false :
+	set( value ):
+		face_left_on_start = value
+		update_face_left()
 
 var sprite : Sprite2D
 var animation : AnimationPlayer
@@ -62,6 +65,7 @@ func setup() -> void:
 
 ## physics process will move enemy anc call state machines physics process
 func _physics_process( delta: float ) -> void:
+	blackboard.update_distance_to_target( global_position )
 	state_machine.change_state( decision_engine.decide() )
 	if affected_by_gravity:
 		velocity += get_gravity() * delta
@@ -121,3 +125,13 @@ func _get_configuration_warnings() -> PackedStringArray:
 		warnings.append( "Requires an DecisionEngine!" )
 	
 	return warnings
+
+
+
+func update_face_left() -> void:
+	if not Engine.is_editor_hint():
+		return
+	for c in get_children():
+		if c is Sprite2D:
+			c.flip_h = face_left_on_start
+	pass

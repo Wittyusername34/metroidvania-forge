@@ -3,6 +3,8 @@ extends Node
 
 enum REVERB_TYPE { NONE, SMALL, MEDIUM, LARGE }
 
+signal player_made_sound( pos : Vector2, volume : float )
+
 @export var ui_focus_audio : AudioStream
 @export var ui_select_audio : AudioStream
 @export var ui_cancel_audio : AudioStream
@@ -94,14 +96,23 @@ func set_reverb( type : REVERB_TYPE ) -> void:
 
 
 
-func play_spacial_sound( audio : AudioStream, pos : Vector2 ) -> void:
-	var ap : AudioStreamPlayer2D = AudioStreamPlayer2D.new()
-	add_child( ap )
-	ap.bus = "SFX"
-	ap.global_position = pos
-	ap.stream = audio
-	ap.finished.connect( ap.queue_free )
-	ap.play()
+func play_spatial_sound( 
+	audio : AudioStream, pos : Vector2, 
+	ignore_pool : bool = true, 
+	was_player : bool = false,
+	volume : float = 0.5
+	) -> void:
+	if ignore_pool:
+		var ap : AudioStreamPlayer2D = AudioStreamPlayer2D.new()
+		add_child( ap )
+		ap.bus = "SFX"
+		ap.global_position = pos
+		ap.stream = audio
+		ap.finished.connect( ap.queue_free )
+		ap.play()
+		
+	if was_player:
+		player_made_sound.emit( pos, volume )
 	pass
 
 

@@ -21,7 +21,7 @@ func _ready() -> void:
 
 
 func _on_switch_activated() -> void:
-	Audio.play_spacial_sound( DOOR_CRASH_AUDIO, global_position )
+	Audio.play_spatial_sound( DOOR_CRASH_AUDIO, global_position, true, false, 0.5 )
 	animation_player.play( "open" )
 	pass
 

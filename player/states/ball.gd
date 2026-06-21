@@ -2,6 +2,9 @@ class_name PlayerStateBall extends PlayerState
 
 const MORPH_AUDIO = preload("uid://c436k5ohlq3bj")
 const MORPH_OUT_AUDIO = preload("uid://cbwwy7t3bogik")
+const JUMP = preload("uid://b0l6pik0wpskn")
+const LAND = preload("uid://bjxnxnlpc0kat")
+
 
 @export var jump_velocity : float = 400
 
@@ -9,8 +12,6 @@ var on_floor : bool = true
 
 @onready var ball_ray_up: RayCast2D = %BallRayUp
 @onready var ball_ray_down: RayCast2D = %BallRayDown
-@onready var jump_audio: AudioStreamPlayer2D = %JumpAudio
-@onready var land_audio: AudioStreamPlayer2D = %LandAudio
 
 
 # what happens when this state is initialized?
@@ -29,7 +30,7 @@ func enter() -> void:
 	player.da_stand.position.y = -11
 	
 	player.velocity.y -= 100
-	Audio.play_spacial_sound( MORPH_AUDIO, player.global_position )
+	Audio.play_spatial_sound( MORPH_AUDIO, player.global_position, true, true, 0.25  )
 	pass
 
 
@@ -45,7 +46,7 @@ func exit() -> void:
 	player.da_stand.position.y = -23
 	
 	player.velocity.y -= 100
-	Audio.play_spacial_sound( MORPH_OUT_AUDIO, player.global_position )
+	Audio.play_spatial_sound( MORPH_OUT_AUDIO, player.global_position, true, true, 0.25 )
 	pass
 
 
@@ -64,7 +65,7 @@ func handle_input( _event : InputEvent ) -> PlayerState:
 					player.position.y += 4
 					return null
 			player.velocity.y -= jump_velocity
-			jump_audio.play()
+			Audio.play_spatial_sound( JUMP, player.global_position, true, true, 0.5 )
 			VisualEffects.jump_dust( player.global_position )
 	return null
   
@@ -89,7 +90,7 @@ func physics_process( _delta: float ) -> PlayerState:
 		if player.is_on_floor():
 			on_floor = true
 			VisualEffects.land_dust( player.global_position )
-			land_audio.play()
+			Audio.play_spatial_sound( LAND, player.global_position, true, true, 0.5 )
 	return null
 
 

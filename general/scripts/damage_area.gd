@@ -10,7 +10,7 @@ signal damage_taken ( attack_area )
 func take_damage( attack_area : AttackArea ) -> void:
 	damage_taken.emit( attack_area )
 	if audio:
-		Audio.play_spacial_sound( audio, global_position )
+		Audio.play_spatial_sound( audio, global_position, true, false, 0.5 )
 	pass
 
 
