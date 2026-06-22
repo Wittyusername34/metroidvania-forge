@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ypwqo7a5vu12"]
+[gd_scene load_steps=32 format=3 uid="uid://ypwqo7a5vu12"]
 
 [ext_resource type="Script" uid="uid://u6oystx2hu5s" path="res://Enemies/scripts/enemy.gd" id="1_343ob"]
 [ext_resource type="Texture2D" uid="uid://l5uo3iuhclgr" path="res://Enemies/slime/slime.png" id="2_1o5i2"]
@@ -13,6 +13,10 @@
 [ext_resource type="AudioStream" uid="uid://biqpfs4gs8h3r" path="res://Enemies/slime/slime_death.wav" id="11_nsw6a"]
 [ext_resource type="Script" uid="uid://5d5f8beoro41" path="res://Enemies/scripts/sensors/edge_sensor.gd" id="12_nsw6a"]
 [ext_resource type="Script" uid="uid://dlpx5glre3wsk" path="res://Enemies/scripts/sensors/player_sensor.gd" id="13_gij2k"]
+[ext_resource type="Script" uid="uid://cou1opipx1nr4" path="res://Enemies/scripts/enemy_hit_particles.gd" id="14_o0lkf"]
+[ext_resource type="Script" uid="uid://c07gr7xtt75fd" path="res://00_global/visual_effects/hit_particle_settings.gd" id="15_8av3x"]
+[ext_resource type="Script" uid="uid://bjjllxinpp7su" path="res://general/scripts/loot_dropper.gd" id="16_8av3x"]
+[ext_resource type="Script" uid="uid://b3r5v2b120jt3" path="res://general/scripts/loot_data.gd" id="17_ocihr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1o5i2"]
 radius = 8.0
@@ -119,6 +123,41 @@ func _physics_process(_delta: float) -> void:
 	pass
 "
 
+[sub_resource type="Gradient" id="Gradient_o0lkf"]
+offsets = PackedFloat32Array(0.51428574, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8av3x"]
+gradient = SubResource("Gradient_o0lkf")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.49253732, 0.48507464)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Resource" id="Resource_ocihr"]
+script = ExtResource("15_8av3x")
+count = 12
+color = Color(0, 0.46415958, 0.98199487, 1)
+texture = SubResource("GradientTexture2D_8av3x")
+metadata/_custom_type_script = "uid://c07gr7xtt75fd"
+
+[sub_resource type="Resource" id="Resource_fwxcm"]
+script = ExtResource("15_8av3x")
+count = 24
+color = Color(0, 0.46415958, 0.98199487, 1)
+metadata/_custom_type_script = "uid://c07gr7xtt75fd"
+
+[sub_resource type="Resource" id="Resource_3gpp7"]
+script = ExtResource("15_8av3x")
+metadata/_custom_type_script = "uid://c07gr7xtt75fd"
+
+[sub_resource type="Resource" id="Resource_slhir"]
+script = ExtResource("17_ocihr")
+item = "uid://ildvsvsow7ol"
+drop_chance = 1.0
+metadata/_custom_type_script = "uid://b3r5v2b120jt3"
+
 [node name="Slime2" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 3
@@ -211,3 +250,16 @@ offset_top = -39.0
 offset_right = 20.0
 offset_bottom = -24.0
 script = SubResource("GDScript_gij2k")
+
+[node name="EnemyHitParticles" type="Marker2D" parent="."]
+position = Vector2(0, -7)
+script = ExtResource("14_o0lkf")
+hit_particles = Array[ExtResource("15_8av3x")]([SubResource("Resource_ocihr")])
+death_particles = Array[ExtResource("15_8av3x")]([SubResource("Resource_fwxcm"), SubResource("Resource_3gpp7")])
+metadata/_custom_type_script = "uid://cou1opipx1nr4"
+
+[node name="LootDropper" type="Marker2D" parent="."]
+position = Vector2(0, -15)
+script = ExtResource("16_8av3x")
+items = Array[ExtResource("17_ocihr")]([SubResource("Resource_slhir")])
+metadata/_custom_type_script = "uid://bjjllxinpp7su"

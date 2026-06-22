@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://14njen7qc56e"]
+[gd_scene load_steps=14 format=3 uid="uid://14njen7qc56e"]
 
 [ext_resource type="Script" uid="uid://qeqdplmgsc3o" path="res://general/scripts/breakable.gd" id="1_6ng2w"]
 [ext_resource type="Script" uid="uid://c07gr7xtt75fd" path="res://00_global/visual_effects/hit_particle_settings.gd" id="2_fpmn4"]
@@ -7,6 +7,8 @@
 [ext_resource type="Resource" uid="uid://d3ro3ca8qycyr" path="res://00_global/visual_effects/hit_particle_settings/hit_wood_large.tres" id="5_1ga2j"]
 [ext_resource type="Script" uid="uid://b322kl12r3ws1" path="res://general/scripts/damage_area.gd" id="6_11c3n"]
 [ext_resource type="Texture2D" uid="uid://dpm5huqp2lu0n" path="res://general/sprites/props_destructible.png" id="7_eo4gh"]
+[ext_resource type="Script" uid="uid://bjjllxinpp7su" path="res://general/scripts/loot_dropper.gd" id="8_jy6sd"]
+[ext_resource type="Script" uid="uid://b3r5v2b120jt3" path="res://general/scripts/loot_data.gd" id="9_pfiku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhabe"]
 size = Vector2(38.75, 35)
@@ -17,6 +19,12 @@ region = Rect2(52, 27, 41, 37)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ng2w"]
 size = Vector2(37, 32)
+
+[sub_resource type="Resource" id="Resource_slhir"]
+script = ExtResource("9_pfiku")
+item = "uid://ildvsvsow7ol"
+drop_chance = 1.0
+metadata/_custom_type_script = "uid://b3r5v2b120jt3"
 
 [node name="Breakable" type="Node2D"]
 script = ExtResource("1_6ng2w")
@@ -46,3 +54,9 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-0.5, 2)
 shape = SubResource("RectangleShape2D_6ng2w")
+
+[node name="LootDropper" type="Marker2D" parent="."]
+position = Vector2(0, -15)
+script = ExtResource("8_jy6sd")
+items = Array[ExtResource("9_pfiku")]([SubResource("Resource_slhir")])
+metadata/_custom_type_script = "uid://bjjllxinpp7su"
