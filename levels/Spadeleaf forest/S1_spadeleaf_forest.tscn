@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://8o6w0tejlisf"]
+[gd_scene load_steps=21 format=4 uid="uid://8o6w0tejlisf"]
 
 [ext_resource type="TileSet" uid="uid://lpqhfgvjb1ri" path="res://levels/tilesets/crashtest_forest.tres" id="1_he6aw"]
 [ext_resource type="Script" uid="uid://cced2sotnp1k3" path="res://general/scripts/level_bounds.gd" id="2_i0s62"]
@@ -14,12 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://co7veifpk2vyd" path="res://levels/props/slamBreakable.tscn" id="12_h2w8l"]
 [ext_resource type="PackedScene" uid="uid://b5h7m6ap8g7s2" path="res://general/save_point/save_point.tscn" id="13_huurl"]
 [ext_resource type="PackedScene" uid="uid://cyytp58fmcba2" path="res://general/ability_pickup/ability_pickup.tscn" id="14_beoqf"]
-[ext_resource type="PackedScene" uid="uid://ypwqo7a5vu12" path="res://Enemies/Slime_2/slime_2.tscn" id="15_bqon5"]
-[ext_resource type="Texture2D" uid="uid://l5uo3iuhclgr" path="res://Enemies/slime/slime.png" id="16_0g2h2"]
-[ext_resource type="Script" uid="uid://cou1opipx1nr4" path="res://Enemies/scripts/enemy_hit_particles.gd" id="18_l832g"]
-[ext_resource type="Script" uid="uid://b322kl12r3ws1" path="res://general/scripts/damage_area.gd" id="19_l832g"]
-[ext_resource type="Script" uid="uid://c07gr7xtt75fd" path="res://00_global/visual_effects/hit_particle_settings.gd" id="19_w35gd"]
-[ext_resource type="AudioStream" uid="uid://q4aeswi2eair" path="res://Enemies/slime/slime_hit.wav" id="20_w35gd"]
+[ext_resource type="PackedScene" uid="uid://cwlylcd4x1k0a" path="res://Enemies/living_armor/living_armor.tscn" id="16_0g2h2"]
+[ext_resource type="Script" uid="uid://bpdpqqmqpei2a" path="res://general/scripts/patrol_limit.gd" id="17_qennp"]
 [ext_resource type="PackedScene" uid="uid://ildvsvsow7ol" path="res://general/health_pickup/health_pickup.tscn" id="21_w35gd"]
 
 [sub_resource type="Gradient" id="Gradient_ofeqj"]
@@ -34,38 +30,6 @@ color_ramp = SubResource("Gradient_ofeqj")
 seamless = true
 normalize = false
 seamless_blend_skirt = 0.5
-
-[sub_resource type="Gradient" id="Gradient_o0lkf"]
-offsets = PackedFloat32Array(0.51428574, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8av3x"]
-gradient = SubResource("Gradient_o0lkf")
-width = 8
-height = 8
-fill = 1
-fill_from = Vector2(0.49253732, 0.48507464)
-fill_to = Vector2(0.5, 0)
-
-[sub_resource type="Resource" id="Resource_ocihr"]
-script = ExtResource("19_w35gd")
-count = 12
-color = Color(0, 0.46415958, 0.98199487, 1)
-texture = SubResource("GradientTexture2D_8av3x")
-metadata/_custom_type_script = "uid://c07gr7xtt75fd"
-
-[sub_resource type="Resource" id="Resource_fwxcm"]
-script = ExtResource("19_w35gd")
-count = 24
-color = Color(0, 0.46415958, 0.98199487, 1)
-metadata/_custom_type_script = "uid://c07gr7xtt75fd"
-
-[sub_resource type="Resource" id="Resource_3gpp7"]
-script = ExtResource("19_w35gd")
-metadata/_custom_type_script = "uid://c07gr7xtt75fd"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bto0"]
-size = Vector2(26, 16)
 
 [node name="03_Spadeleaf_Forest" type="Node2D"]
 
@@ -158,7 +122,7 @@ target_level = "uid://d27eyekgq2rwi"
 target_area_name = "SF04Left_Bottom"
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("4_rhabe")]
-position = Vector2(161, 292)
+position = Vector2(516, 514)
 
 [node name="Fog Parallax2D" type="Parallax2D" parent="."]
 z_index = 3
@@ -206,47 +170,19 @@ type = 2
 position = Vector2(256, 175)
 type = 3
 
-[node name="Slime2" parent="." instance=ExtResource("15_bqon5")]
-position = Vector2(183, 611)
-face_left_on_start = false
-
-[node name="Slime3" parent="." instance=ExtResource("15_bqon5")]
-position = Vector2(278, 610)
-face_left_on_start = false
-
-[node name="Slime4" parent="." instance=ExtResource("15_bqon5")]
-position = Vector2(619, 611)
-face_left_on_start = false
-
-[node name="Slime5" parent="." instance=ExtResource("15_bqon5")]
-position = Vector2(726, 613)
-face_left_on_start = false
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.7688807, 1, 0, 1)
-position = Vector2(673, 501)
-texture = ExtResource("16_0g2h2")
-hframes = 6
-vframes = 3
-
-[node name="EnemyHitParticles" type="Marker2D" parent="Sprite2D"]
-position = Vector2(1, 6)
-script = ExtResource("18_l832g")
-hit_particles = Array[ExtResource("19_w35gd")]([SubResource("Resource_ocihr")])
-death_particles = Array[ExtResource("19_w35gd")]([SubResource("Resource_fwxcm"), SubResource("Resource_3gpp7")])
-metadata/_custom_type_script = "uid://cou1opipx1nr4"
-
-[node name="DamageArea" type="Area2D" parent="Sprite2D"]
-collision_layer = 32
-collision_mask = 0
-script = ExtResource("19_l832g")
-audio = ExtResource("20_w35gd")
-metadata/_custom_type_script = "uid://b322kl12r3ws1"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/DamageArea"]
-visible = false
-position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_6bto0")
-
 [node name="HealthPickup" parent="." instance=ExtResource("21_w35gd")]
 position = Vector2(277, 236)
+
+[node name="LivingArmor" parent="." instance=ExtResource("16_0g2h2")]
+position = Vector2(614, 610)
+
+[node name="PatrolLimit" type="Node2D" parent="LivingArmor"]
+position = Vector2(-25, -1)
+script = ExtResource("17_qennp")
+metadata/_custom_type_script = "uid://bpdpqqmqpei2a"
+
+[node name="PatrolLimit2" type="Node2D" parent="LivingArmor"]
+position = Vector2(141, 0)
+script = ExtResource("17_qennp")
+side = 2
+metadata/_custom_type_script = "uid://bpdpqqmqpei2a"
